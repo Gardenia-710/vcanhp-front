@@ -11,7 +11,7 @@ const NAV_ITEMS = [
   },
   {
     title: "アドバイザー",
-    href: "/adviser",
+    href: "/advisor",
   },
   {
     title: "メンバー",
