@@ -37,7 +37,7 @@ const NAV_ITEMS = [
 
 export default function SpMenu() {
   return (
-    <div className="block md:hidden">
+    <div className="block lg:hidden">
       <Sheet>
         <SheetTrigger>
           <Button variant="outline" size="icon" asChild>
