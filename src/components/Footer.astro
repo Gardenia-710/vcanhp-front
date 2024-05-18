@@ -1,0 +1,26 @@
+---
+import { Image } from "astro:assets";
+import logo from "@/assets/cropped-logo.png";
+import SnsLinks from "@/components/Footer/SnsLinks";
+import TermLinks from "@/components/Footer/TermLinks";
+---
+
+<footer class="border-t">
+  <div
+    class="container h-full flex flex-col md:flex-row items-center justify-between gap-y-4 mt-4"
+  >
+    <a href="/">
+      <div class="flex items-center gap-x-2">
+        <Image src={logo} alt="logo" class="h-20 w-20" />
+        <span class="text-2xl font-bold">Vcan</span>
+      </div>
+    </a>
+    <div>
+      <div class="flex flex-row gap-x-6">
+        <SnsLinks />
+        <TermLinks />
+      </div>
+    </div>
+  </div>
+  <p class="text-center">&copy; 2024 Vcan.</p>
+</footer>
