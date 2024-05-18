@@ -29,7 +29,7 @@ const NAV_ITEMS = [
 
 export default function PcMenu() {
   return (
-    <div className="lg:flex flex-row hidden">
+    <div className="md:flex flex-row hidden">
       {NAV_ITEMS.map((item) => (
         <Button key={item.title} variant="link" asChild>
           <a href={item.href}>{item.title}</a>
