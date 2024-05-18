@@ -10,6 +10,10 @@ import {
 
 const NAV_ITEMS = [
   {
+    title: "Vcanについて",
+    href: "/about",
+  },
+  {
     title: "活動実績",
     href: "/activity-result",
   },
