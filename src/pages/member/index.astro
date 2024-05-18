@@ -1,12 +1,43 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import CoreMemberAvatar from "@/components/Member/CoreMemberAvatar";
+import MemberAvatar from "@/components/Member/MemberAvatar";
 ---
 
 <Layout
   title="メンバー"
   description="医学部医学科のメンバー以外にも、看護学科、商学部、工学部のメンバーも一緒に活動しています。"
 >
-  <h2>コアメンバー</h2>
-  <h2>メンバー</h2>
-  <h2>OB/OG</h2>
+  <section>
+    <h2>コアメンバー</h2>
+    <div class="grid md:grid-cols-3 gap-6 mt-6">
+      <CoreMemberAvatar name="名前〇〇" title="代表" client:load />
+      <CoreMemberAvatar name="名前〇〇" title="代表" client:load />
+      <CoreMemberAvatar name="名前〇〇" title="代表" client:load />
+      <CoreMemberAvatar name="名前〇〇" title="代表" client:load />
+      <CoreMemberAvatar name="名前〇〇" title="代表" client:load />
+    </div>
+  </section>
+  <section>
+    <h2>メンバー</h2>
+    <div class="grid md:grid-cols-4 gap-6 mt-6">
+      <MemberAvatar client:load />
+      <MemberAvatar client:load />
+      <MemberAvatar client:load />
+      <MemberAvatar client:load />
+      <MemberAvatar client:load />
+      <MemberAvatar client:load />
+    </div>
+  </section>
+  <section>
+    <h2>OB/OG</h2>
+    <div class="grid md:grid-cols-4 gap-6 mt-6">
+      <MemberAvatar client:load />
+      <MemberAvatar client:load />
+      <MemberAvatar client:load />
+      <MemberAvatar client:load />
+      <MemberAvatar client:load />
+      <MemberAvatar client:load />
+    </div>
+  </section>
 </Layout>
