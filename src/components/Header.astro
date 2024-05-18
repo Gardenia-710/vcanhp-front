@@ -1,0 +1,19 @@
+---
+import SpMenu from "./SpMenu";
+import PcMenu from "./PcMenu";
+import logo from "@/assets/cropped-logo.png";
+import { Image } from "astro:assets";
+---
+
+<header class="border-b h-16">
+  <nav class="container flex items-center justify-between h-full">
+    <a href="/">
+      <div class="flex items-center gap-x-2">
+        <Image src={logo} alt="logo" class="h-12 w-12" />
+        <span class="text-2xl font-bold">Vcan</span>
+      </div>
+    </a>
+    <SpMenu client:load />
+    <PcMenu client:load />
+  </nav>
+</header>
