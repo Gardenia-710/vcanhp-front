@@ -1,6 +1,18 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import AdvisorCard from "@/components/Advisor/AdvisorCard";
+import { newtClient } from "@/lib/newt";
+import type { Advisor } from "@/lib/newt";
+
+const { items: advisors } = await newtClient.getContents<Advisor>({
+  appUid: import.meta.env.NEWT_APP_UID,
+  modelUid: "advisor",
+  query: {
+    order: ["_sys.createdAt"],
+  },
+});
+
+console.log(advisors);
 ---
 
 <Layout
@@ -8,17 +20,16 @@ import AdvisorCard from "@/components/Advisor/AdvisorCard";
   description="Vcanをサポートしてくださっているサポーターの先生方のご紹介です。"
 >
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-    <AdvisorCard
-      name="上田豊"
-      title="大阪大学大学院医学系研究科 産科学婦人科学講師"
-      comment="本邦において子宮頸がん対策は喫緊の課題です。産婦人科医として日々の頸がん診療にあたりつつ、何とか予防策の普及にも努めたいと思っています。 その中で、学校での学びはとても大きなインパクトがあると思います。 それも、年齢の比較的近い医学部学生の皆さんが情報を発信されていくことには期待をせずにはいられません。 正しい情報がきちんと届けば行動変容につながり、健康や命を守ることにつながります。皆さんの活動がうまく展開していくことを祈念しています。"
-      client:load
-    />
-    <AdvisorCard name="上田豊" title="肩書" comment="コメント" client:load />
-    <AdvisorCard name="上田豊" title="肩書" comment="コメント" client:load />
-    <AdvisorCard name="上田豊" title="肩書" comment="コメント" client:load />
-    <AdvisorCard name="上田豊" title="肩書" comment="コメント" client:load />
-    <AdvisorCard name="上田豊" title="肩書" comment="コメント" client:load />
-    <AdvisorCard name="上田豊" title="肩書" comment="コメント" client:load />
+    {
+      advisors.map((advisor) => (
+        <AdvisorCard
+          name={advisor.name}
+          title={advisor.title}
+          comment={advisor.comment}
+          imageSrc={advisor.image.src}
+          client:load
+        />
+      ))
+    }
   </div>
 </Layout>

@@ -13,19 +13,21 @@ type AdvisorCardProps = {
   name: string;
   title: string;
   comment: string;
+  imageSrc: string;
 };
 
 export default function AdvisorCard({
   name,
   title,
   comment,
+  imageSrc,
 }: AdvisorCardProps) {
   return (
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-x-2">
           <Avatar>
-            <AvatarImage src="https://github.com/shadcn.png" />
+            <AvatarImage src={imageSrc} />
             <AvatarFallback>写真</AvatarFallback>
           </Avatar>
           {name}
