@@ -11,8 +11,6 @@ const { items: advisors } = await newtClient.getContents<Advisor>({
     order: ["_sys.createdAt"],
   },
 });
-
-console.log(advisors);
 ---
 
 <Layout
