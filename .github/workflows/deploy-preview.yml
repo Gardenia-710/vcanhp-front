@@ -21,6 +21,9 @@ jobs:
         run: bun install
       - name: Build
         run: bun run build
+        env:
+          PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY: 6LduGDQpAAAAAKaJwFoSmg3UfUlbXvDTNG0cKlwQ
+          PUBLIC_NEWT_FORM_URL: https://obi1-dev.form.newt.so/v1/9nx-Z-uxw
       - name: Deploy to preview
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
