@@ -94,4 +94,7 @@
   ul li {
     @apply my-6 ml-6 list-disc [&>li]:mt-2;
   }
+  p a {
+    @apply font-medium text-primary underline underline-offset-4;
+  }
 }

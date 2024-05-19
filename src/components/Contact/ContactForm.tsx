@@ -220,7 +220,11 @@ export default function ContactForm() {
                       プライバシーポリシーに同意する
                     </FormLabel>
                     <FormDescription>
-                      お問い合わせ内容を送信する前に、プライバシーポリシーをお読みいただき同意いただく必要があります。
+                      お問い合わせ内容を送信する前に、
+                      <a href="/terms/privacy" target="blank">
+                        プライバシーポリシー
+                      </a>
+                      をお読みいただき同意いただく必要があります。
                     </FormDescription>
                     <FormMessage />
                   </div>
