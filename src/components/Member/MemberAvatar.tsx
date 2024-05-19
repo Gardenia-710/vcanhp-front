@@ -1,9 +1,13 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-export default function MemberAvatar() {
+type MemberAvatarProps = {
+  imageSrc: string;
+};
+
+export default function MemberAvatar({ imageSrc }: MemberAvatarProps) {
   return (
     <Avatar className="w-32 h-32">
-      <AvatarImage src="https://github.com/shadcn.png" />
+      <AvatarImage src={imageSrc} />
       <AvatarFallback>CN</AvatarFallback>
     </Avatar>
   );
