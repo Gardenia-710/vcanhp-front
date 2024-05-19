@@ -1,31 +1,5 @@
 import { Button } from "./ui/button";
-
-const NAV_ITEMS = [
-  {
-    title: "Vcanについて",
-    href: "/about",
-  },
-  {
-    title: "活動実績",
-    href: "/activity-result",
-  },
-  {
-    title: "アドバイザー",
-    href: "/advisor",
-  },
-  {
-    title: "メンバー",
-    href: "/member",
-  },
-  {
-    title: "ご支援のお願い",
-    href: "/support",
-  },
-  {
-    title: "お問い合わせ",
-    href: "/contact",
-  },
-];
+import { NAV_ITEMS } from "@/constants";
 
 export default function PcMenu() {
   return (

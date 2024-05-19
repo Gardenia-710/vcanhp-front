@@ -5,3 +5,26 @@ export const CONTACT_TYPES = [
   "協賛・企画のご依頼について",
   "その他について",
 ] as const;
+
+export const NAV_ITEMS = [
+  {
+    title: "Vcanについて",
+    href: "/about",
+  },
+  {
+    title: "活動実績",
+    href: "/activity-result",
+  },
+  {
+    title: "アドバイザー",
+    href: "/advisor",
+  },
+  {
+    title: "メンバー",
+    href: "/member",
+  },
+  {
+    title: "お問い合わせ",
+    href: "/contact",
+  },
+];
