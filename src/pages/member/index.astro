@@ -1,0 +1,88 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import CoreMemberAvatar from "@/components/Member/CoreMemberAvatar";
+import MemberAvatar from "@/components/Member/MemberAvatar";
+import type { Member } from "@/lib/newt";
+import { newtClient } from "@/lib/newt";
+
+const { items: members } = await newtClient.getContents<Member>({
+  appUid: import.meta.env.NEWT_APP_UID,
+  modelUid: "member",
+  query: {
+    order: ["_sys.createdAt"],
+  },
+});
+---
+
+<Layout
+  title="メンバー"
+  description="医学部医学科のメンバー以外にも、看護学科、商学部、工学部のメンバーも一緒に活動しています。"
+>
+  <section>
+    <h2>コアメンバー</h2>
+    <div class="grid md:grid-cols-3 gap-6 mt-6">
+      {
+        members.map((member) => {
+          if (member.type === "coreMember" && member.title === "代表") {
+            return (
+              <CoreMemberAvatar
+                name={member.name}
+                title={member.title}
+                imageSrc={member.image.src}
+                client:load
+              />
+            );
+          }
+          if (member.type === "coreMember" && member.title === "副代表") {
+            return (
+              <CoreMemberAvatar
+                name={member.name}
+                title={member.title}
+                imageSrc={member.image.src}
+                client:load
+              />
+            );
+          }
+          if (
+            member.type === "coreMember" &&
+            member.title !== "代表" &&
+            member.title !== "副代表"
+          ) {
+            return (
+              <CoreMemberAvatar
+                name={member.name}
+                title={member.title}
+                imageSrc={member.image.src}
+                client:load
+              />
+            );
+          }
+        })
+      }
+    </div>
+  </section>
+  <section>
+    <h2>メンバー</h2>
+    <div class="grid md:grid-cols-4 gap-6 mt-6">
+      {
+        members.map((member) => {
+          if (member.type === "member") {
+            return <MemberAvatar imageSrc={member.image.src} client:load />;
+          }
+        })
+      }
+    </div>
+  </section>
+  <section>
+    <h2>OB/OG</h2>
+    <div class="grid md:grid-cols-4 gap-6 mt-6">
+      {
+        members.map((member) => {
+          if (member.type === "ob-og") {
+            return <MemberAvatar imageSrc={member.image.src} client:load />;
+          }
+        })
+      }
+    </div>
+  </section>
+</Layout>

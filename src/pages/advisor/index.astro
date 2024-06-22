@@ -1,0 +1,33 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import AdvisorCard from "@/components/Advisor/AdvisorCard";
+import { newtClient } from "@/lib/newt";
+import type { Advisor } from "@/lib/newt";
+
+const { items: advisors } = await newtClient.getContents<Advisor>({
+  appUid: import.meta.env.NEWT_APP_UID,
+  modelUid: "advisor",
+  query: {
+    order: ["_sys.createdAt"],
+  },
+});
+---
+
+<Layout
+  title="アドバイザー"
+  description="Vcanをサポートしてくださっているサポーターの先生方のご紹介です。"
+>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+    {
+      advisors.map((advisor) => (
+        <AdvisorCard
+          name={advisor.name}
+          title={advisor.title}
+          comment={advisor.comment}
+          imageSrc={advisor.image.src}
+          client:load
+        />
+      ))
+    }
+  </div>
+</Layout>

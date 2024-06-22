@@ -1,0 +1,34 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { newtClient } from "@/lib/newt";
+import type { Activity } from "@/lib/newt"
+
+const { postId } = Astro.params;
+
+export const getStaticPaths = async () => {
+  const { items: activities } = await newtClient.getContents<Activity>({
+    appUid: import.meta.env.NEWT_APP_UID,
+    modelUid: "activity",
+    query: {
+      order: ["_sys.createdAt"],
+      select: ["_id"]
+    },
+  });
+  return activities.map((activity) => {
+    return {params: {postId: activity._id}}
+  })
+}
+
+const content = await newtClient.getContent<Activity>({
+  appUid: import.meta.env.NEWT_APP_UID,
+  modelUid: "activity",
+  contentId: postId
+});
+---
+
+<Layout
+  title={content.title}
+  description={content.description}
+  >
+  <article set:html={content.body} />
+</Layout>
