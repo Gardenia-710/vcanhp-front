@@ -1,0 +1,30 @@
+---
+import ActivityCard from "@/components/ActivityResult/ActivityCard"
+import Layout from "@/layouts/Layout.astro";
+import { newtClient, type Activity } from "@/lib/newt";
+const { items: activities } = await newtClient.getContents<Activity>({
+    appUid: import.meta.env.NEWT_APP_UID,
+    modelUid: "activity",
+    query: {
+      order: ["_sys.createdAt"],
+    },
+  });
+
+
+---
+
+<Layout
+  title="活動報告"
+  description="Vcanの活動報告です"
+>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+  {activities.map((activity) => (
+    <ActivityCard
+      postId={activity._id}
+      title={activity.title}
+      description={activity.description}
+      imageSrc={activity.thumbnail.src}
+    />
+  ))}
+</div>
+</Layout>
