@@ -1,0 +1,28 @@
+---
+export const prerender = false;
+
+import Layout from "@/layouts/Layout.astro";
+import type { Activity } from "@/lib/newt";
+import { previewClient } from "@/lib/newt";
+
+const { postId } = Astro.params
+
+if (!postId) {
+  return new Response(null, {
+    status: 404,
+    statusText: "指定された記事は見つかりません。"
+  });
+}
+
+const content = await previewClient.getContent<Activity>({
+  appUid: import.meta.env.NEWT_APP_UID,
+  modelUid: "activity",
+  contentId: postId
+});
+---
+<Layout
+  title={content.title}
+  description={content.description}
+>
+  <article set:html={content.body} />
+</Layout>
