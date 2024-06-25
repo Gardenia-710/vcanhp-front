@@ -1,38 +1,26 @@
 import { createClient } from "newt-client-js";
+import type { Content, Image } from "newt-client-js";
 
-export type Member = {
-  _id: string;
+export interface Member extends Content {
   name: string;
   title: string;
   type: string;
-  image: {
-    src: string;
-  };
-};
+  image: Image;
+}
 
-export type Advisor = {
-  _id: string;
+export interface Advisor extends Content {
   name: string;
   title: string;
   comment: string;
-  image: {
-    src: string;
-  };
-};
+  image: Image;
+}
 
-export type Activity = {
-  _id: string;
-  _sys: {
-    createdAt: string;
-    updatedAt: string;
-  };
+export interface Activity extends Content {
   title: string;
   description: string;
   body: string;
-  thumbnail: {
-    src: string;
-  };
-};
+  thumbnail: Image;
+}
 
 export const newtClient = createClient({
   spaceUid: import.meta.env.NEWT_SPACE_UID,
