@@ -31,7 +31,8 @@ import { Textarea } from "../ui/textarea";
 import { Checkbox } from "../ui/checkbox";
 
 const googleRecaptchaSiteKey = import.meta.env.PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY;
-const formUrl = import.meta.env.PUBLIC_NEWT_FORM_URL;
+// const formUrl = import.meta.env.PUBLIC_NEWT_FORM_URL;
+const formUrl = "/api/contact";
 
 const formSchema = z.object({
   name: z
